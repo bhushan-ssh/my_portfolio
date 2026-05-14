@@ -6,85 +6,55 @@ import { SOCIAL_LINKS, CONTACT } from '@/lib/portfolio-config';
 export function ContactSection() {
   return (
     <section id="contact" className="border-t border-border bg-muted py-16 sm:py-24">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6">
-        <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-12 text-center">{CONTACT.title}</h2>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 text-center">{CONTACT.title}</h2>
+        <p className="text-center text-muted-foreground mb-12">{CONTACT.description}</p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          {/* Contact Info */}
-          <div className="space-y-6">
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <Mail className="text-accent" size={24} />
-              </div>
-              <div>
-                <h3 className="font-semibold text-foreground">Email</h3>
-                <a
-                  href={`mailto:${SOCIAL_LINKS.email}`}
-                  className="text-muted-foreground hover:text-accent transition-colors"
-                >
-                  {SOCIAL_LINKS.email}
-                </a>
-              </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          {/* Email */}
+          <a 
+            href={`mailto:${SOCIAL_LINKS.email}`}
+            className="flex flex-col items-center gap-3 p-6 bg-background border border-border rounded-lg hover:border-accent/70 hover:bg-accent/5 transition-all"
+          >
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-accent/10">
+              <Mail className="text-accent" size={24} />
             </div>
+            <h3 className="font-semibold text-foreground">Email</h3>
+            <p className="text-sm text-muted-foreground text-center hover:text-accent transition-colors">{SOCIAL_LINKS.email}</p>
+          </a>
 
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <Phone className="text-accent" size={24} />
-              </div>
-              <div>
-                <h3 className="font-semibold text-foreground">Phone</h3>
-                <a href={`tel:${SOCIAL_LINKS.phone}`} className="text-muted-foreground hover:text-accent transition-colors">
-                  {SOCIAL_LINKS.phone}
-                </a>
-              </div>
+          {/* Phone */}
+          <a 
+            href={`tel:${SOCIAL_LINKS.phone}`}
+            className="flex flex-col items-center gap-3 p-6 bg-background border border-border rounded-lg hover:border-accent/70 hover:bg-accent/5 transition-all"
+          >
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-accent/10">
+              <Phone className="text-accent" size={24} />
             </div>
+            <h3 className="font-semibold text-foreground">Phone</h3>
+            <p className="text-sm text-muted-foreground text-center hover:text-accent transition-colors">{SOCIAL_LINKS.phone}</p>
+          </a>
 
-            <div className="flex gap-4">
-              <div className="flex-shrink-0">
-                <MapPin className="text-accent" size={24} />
-              </div>
-              <div>
-                <h3 className="font-semibold text-foreground">Location</h3>
-                <p className="text-muted-foreground">{SOCIAL_LINKS.location}</p>
-              </div>
+          {/* Location */}
+          <div className="flex flex-col items-center gap-3 p-6 bg-background border border-border rounded-lg">
+            <div className="flex items-center justify-center w-12 h-12 rounded-full bg-accent/10">
+              <MapPin className="text-accent" size={24} />
             </div>
+            <h3 className="font-semibold text-foreground">Location</h3>
+            <p className="text-sm text-muted-foreground text-center">{SOCIAL_LINKS.location}</p>
           </div>
-
-          {/* Contact Form */}
-          <form className="space-y-4">
-            <input
-              type="text"
-              placeholder="Your Name"
-              className="w-full px-4 py-3 border border-border rounded bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors"
-            />
-            <input
-              type="email"
-              placeholder="Your Email"
-              className="w-full px-4 py-3 border border-border rounded bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors"
-            />
-            <textarea
-              placeholder="Your Message"
-              rows={4}
-              className="w-full px-4 py-3 border border-border rounded bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-accent transition-colors resize-none"
-            />
-            <button
-              type="submit"
-              className="w-full px-6 py-3 bg-accent text-white font-medium rounded hover:bg-accent/90 transition-colors"
-            >
-              Send Message
-            </button>
-          </form>
         </div>
 
         {/* Social Links */}
         <div className="border-t border-border pt-8">
-          <p className="text-sm text-muted-foreground text-center mb-6">Find me on social media</p>
+          <p className="text-sm text-muted-foreground text-center mb-6">Connect on social media</p>
           <div className="flex justify-center gap-6">
             <a
               href={SOCIAL_LINKS.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-accent transition-colors"
+              className="p-3 border border-border rounded-full hover:border-accent/70 hover:bg-accent/10 text-muted-foreground hover:text-accent transition-all"
+              aria-label="GitHub"
             >
               <Github size={24} />
             </a>
@@ -92,7 +62,8 @@ export function ContactSection() {
               href={SOCIAL_LINKS.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-accent transition-colors"
+              className="p-3 border border-border rounded-full hover:border-accent/70 hover:bg-accent/10 text-muted-foreground hover:text-accent transition-all"
+              aria-label="LinkedIn"
             >
               <Linkedin size={24} />
             </a>
