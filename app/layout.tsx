@@ -8,6 +8,8 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+
+
 export const metadata: Metadata = {
   title: "Bhushan Sonawane | IT Engineer & Full-Stack Developer",
   description:
