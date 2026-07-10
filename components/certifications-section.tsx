@@ -2,6 +2,8 @@
 
 import { Award } from 'lucide-react';
 import { CERTIFICATIONS } from '@/lib/portfolio-config';
+import { CertificateUpload } from './certificate-upload';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 export function CertificationsSection() {
   return (
@@ -9,30 +11,53 @@ export function CertificationsSection() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-12">Certifications</h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {CERTIFICATIONS.map((cert) => (
-            <a
-              key={cert.name}
-              href={cert.credentialLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group p-6 bg-background border border-border rounded-lg hover:border-accent/70 hover:shadow-md transition-all duration-200"
-            >
-              <div className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-accent/10">
-                    <Award size={24} className="text-accent" />
+        <Tabs defaultValue="verified" className="w-full">
+          <TabsList className="grid w-full max-w-md grid-cols-2">
+            <TabsTrigger value="verified">Verified</TabsTrigger>
+            <TabsTrigger value="upload">My Certificates</TabsTrigger>
+          </TabsList>
+
+          {/* Verified Certifications Tab */}
+          <TabsContent value="verified" className="mt-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {CERTIFICATIONS.map((cert) => (
+                <a
+                  key={cert.name}
+                  href={cert.credentialLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group p-6 bg-background border border-border rounded-lg hover:border-accent/70 hover:shadow-md transition-all duration-200"
+                >
+                  <div className="flex gap-4">
+                    <div className="flex-shrink-0">
+                      <div className="flex items-center justify-center w-12 h-12 rounded-full bg-accent/10">
+                        <Award size={24} className="text-accent" />
+                      </div>
+                    </div>
+                    <div className="flex-grow">
+                      <h3 className="font-semibold text-foreground text-base group-hover:text-accent transition-colors">{cert.name}</h3>
+                      <p className="text-sm text-muted-foreground mt-1">{cert.organization}</p>
+                      <p className="text-xs text-muted-foreground mt-2">{cert.date}</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex-grow">
-                  <h3 className="font-semibold text-foreground text-base group-hover:text-accent transition-colors">{cert.name}</h3>
-                  <p className="text-sm text-muted-foreground mt-1">{cert.organization}</p>
-                  <p className="text-xs text-muted-foreground mt-2">{cert.date}</p>
-                </div>
+                </a>
+              ))}
+            </div>
+          </TabsContent>
+
+          {/* Upload Certificates Tab */}
+          <TabsContent value="upload" className="mt-8">
+            <div className="bg-background rounded-lg p-6 sm:p-8">
+              <div className="mb-6">
+                <h3 className="text-lg font-semibold text-foreground mb-2">Upload Your Certificates</h3>
+                <p className="text-sm text-muted-foreground">
+                  Add images or PDFs of your certificates with titles and issuer information. Similar to Google Drive, you can drag and drop, add captions, and organize your documents.
+                </p>
               </div>
-            </a>
-          ))}
-        </div>
+              <CertificateUpload />
+            </div>
+          </TabsContent>
+        </Tabs>
       </div>
     </section>
   );
