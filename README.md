@@ -1,5 +1,1 @@
-My portfolio website using typescript.
-
-
-
-
+My portfolio website using typescript
